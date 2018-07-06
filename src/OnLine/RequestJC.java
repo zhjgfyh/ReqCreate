@@ -2,7 +2,7 @@
  * 集采
  * */
 
-package ChinaDeb;
+package OnLine;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class RequestJC {
 	public void InitDriver(){
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ZJ\\Downloads\\chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://192.168.6.108:1111/view/auth/login.html");
+		driver.get("http://101.251.248.154/view/auth/login.html");
 		driver.manage().window().maximize();
 	}
 	
@@ -31,17 +31,9 @@ public class RequestJC {
 	 * */
 	public void InputBox(){
 		WebElement user = driver.findElement(By.id("name"));
-		user.sendKeys("sqw123");
-		// 获取输入框默认提示信息
-		String user_info = user.getAttribute("placeholder");
-		System.out.println(user_info);
-		// 获取输入的内容
-		String user_value = user.getAttribute("value");
-		System.out.println(user_value);
-		// 判断输入框是否为可输入状态
-		boolean enable = user.isEnabled();
-		System.out.println(enable);
-		driver.findElement(By.name("password")).sendKeys("sqw123");
+		user.sendKeys("scbgr");
+		this.sleep(1000);
+		driver.findElement(By.name("password")).sendKeys("scbgr");
 		driver.findElement(By.className("loginBtn")).click();
 		try {
 			Thread.sleep(3000);
@@ -72,7 +64,7 @@ public class RequestJC {
 		elements.get(1).click();
 		
 		// 创建采购申请
-		driver.get("http://192.168.6.108:1111/view/purchaseManage/purchaseRequest/createPurReq.html");
+		driver.get("http://101.251.248.154/view/purchaseManage/purchaseRequest/createPurReq.html");
 		driver.findElement(By.className("btnLeft")).click();
 		try {
 			Thread.sleep(2000);
@@ -82,15 +74,16 @@ public class RequestJC {
 		}
 		
 		// 打开物资列表
-		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/ul[1]/li[3]")).click();
-
+		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/ul/li[1]")).click();
+		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/ul[2]/li[1]")).click();
+		/**
+		 * driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/ul[2]/li[1]")).click();
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -104,14 +97,17 @@ public class RequestJC {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		 * */
+		
 		// 选择物资
-		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[3]/table[2]/tbody/tr/td[1]/div/label")).click();
+		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[3]/table[2]/tbody/tr[1]/td[1]/div/label")).click();
 		driver.findElement(By.className("depBtn")).click();
+
 		
 		/**
 		 * 输入采购申请编号 
 		 * */
-		driver.findElement(By.className("whiteMsgIpt")).sendKeys("JC-070515");
+		driver.findElement(By.className("whiteMsgIpt")).sendKeys("TEST-JC-070601");
 		this.sleep(1000);
 		
 		//选择采购结果类型 - 生成合同
@@ -151,16 +147,16 @@ public class RequestJC {
 		driver.switchTo().defaultContent();
 		this.sleep(2000);
 		
-		// 选择收货单位(北京：1524018218512，天津：1524018218532，好利来：1524018218511)
+		// 选择收货单位(河北海蓝电力有限公司：17)
 		WebElement receiveEnt = driver.findElement(By.name("receivingEnterpriseId"));
 		Select downList2 = new Select(receiveEnt);
-		downList2.selectByValue("1524018218512");
+		downList2.selectByValue("17");
 		this.sleep(1000);
 		
 		// 选择结算单位
 		WebElement payEnt = driver.findElement(By.name("payEnterpriseId"));
 		Select downList3 = new Select(payEnt);
-		downList3.selectByValue("1524018218512");
+		downList3.selectByValue("17");
 		this.sleep(1000);
 		
 		// 选择收货地址
@@ -174,7 +170,7 @@ public class RequestJC {
 		// 选择需求单位
 		WebElement needEnt = driver.findElement(By.name("needEnterpriseId"));
 		Select downList4 = new Select(needEnt);
-		downList4.selectByValue("1524018218512");
+		downList4.selectByValue("17");
 		this.sleep(1000);
 		
 		// 输入联系人姓名
@@ -212,3 +208,4 @@ public class RequestJC {
 	}
 
 }
+

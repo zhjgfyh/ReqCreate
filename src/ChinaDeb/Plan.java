@@ -137,13 +137,13 @@ public class Plan {
 		/**
 		 * 输入采购计划编号
 		 * */ 
-		driver.findElement(By.name("planCodeId")).sendKeys("Plan-070201");
+		driver.findElement(By.name("planCodeId")).sendKeys("Plan-JC-070515");
 		this.sleep(1000);
 			
 		/**
 		 * 输入采购计划名称
 		 * */ 
-		driver.findElement(By.name("planName")).sendKeys("采购计划-070201");
+		driver.findElement(By.name("planName")).sendKeys("采购计划-集采-070515");
 		this.sleep(1000);
 		
 		/**
@@ -167,7 +167,12 @@ public class Plan {
 		 * 计划截止日期
 		 * */ 
 		driver.findElement(By.xpath("//*[@id='Form']/div[6]/input[2]")).click();
-		this.sleep(1000);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		/**
 		 * 切换到iFrame再跳出

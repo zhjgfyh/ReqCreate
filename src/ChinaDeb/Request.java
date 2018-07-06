@@ -112,7 +112,7 @@ public class Request {
 		/**
 		 * 输入采购申请编号 
 		 * */
-		driver.findElement(By.className("whiteMsgIpt")).sendKeys("ZC-0070203");
+		driver.findElement(By.className("whiteMsgIpt")).sendKeys("ZC-0070506");
 		this.sleep(1000);
 		
 		//选择采购结果类型 - 生成合同
@@ -126,7 +126,7 @@ public class Request {
 		this.sleep(1000);
 		
 		// 输入概算金额
-		driver.findElement(By.name("countMoney")).sendKeys("50000");
+		driver.findElement(By.name("countMoney")).sendKeys("8888.88");
 		this.sleep(2000);
 		
 		// 交货期startTime
@@ -156,13 +156,13 @@ public class Request {
 		// 下拉菜单 - 选择收货单位(北京：1524018218512，天津：1524018218532，好利来：1524018218511)
 		WebElement receiveEnt = driver.findElement(By.name("receivingEnterpriseId"));
 		Select downList2 = new Select(receiveEnt);
-		downList2.selectByValue("1524018218512");
+		downList2.selectByValue("1524018218532");
 		this.sleep(1000);
 		
 		// 选择结算单位
 		WebElement payEnt = driver.findElement(By.name("payEnterpriseId"));
 		Select downList3 = new Select(payEnt);
-		downList3.selectByValue("1524018218512");
+		downList3.selectByValue("1524018218532");
 		this.sleep(1000);
 		
 		// 选择收货地址
@@ -170,21 +170,21 @@ public class Request {
 		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/div[11]/div/div/div/div[2]/div[1]/dl[1]/dd/a[1]")).click();
 		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/div[11]/div/div/div/div[2]/div[2]/dl/dd/a[1]")).click();
 		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/div[11]/div/div/div/div[2]/div[3]/dl/dd/a[1]")).click();
-		driver.findElement(By.name("receiveAddress")).sendKeys("SS-88-A6");
+		driver.findElement(By.name("receiveAddress")).sendKeys("TJ-HX-X5");
 		this.sleep(1000);
 		
 		// 选择需求单位
 		WebElement needEnt = driver.findElement(By.name("needEnterpriseId"));
 		Select downList4 = new Select(needEnt);
-		downList4.selectByValue("1524018218512");
+		downList4.selectByValue("1524018218532");
 		this.sleep(1000);
 		
 		// 输入联系人姓名
-		driver.findElement(By.name("linkmanName")).sendKeys("BJ-Li");
+		driver.findElement(By.name("linkmanName")).sendKeys("TJ-Li");
 		this.sleep(1000);
 		
 		// 输入手机号码
-		driver.findElement(By.name("linkmanPhone")).sendKeys("1891112345");
+		driver.findElement(By.name("linkmanPhone")).sendKeys("18911123456");
 		this.sleep(1000);
 		
 		// 输入邮箱
