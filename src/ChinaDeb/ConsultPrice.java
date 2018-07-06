@@ -1,13 +1,13 @@
 package ChinaDeb;
 
 import java.util.List;
-import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 //import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Select;
 
 public class ConsultPrice {
 
@@ -73,11 +73,95 @@ public WebDriver driver;
 		
 		// 询价单管理
 		driver.get("http://192.168.6.108:1111/view/purchaseManage/enquiryManage/inquiryList/waitingCreate.html");
-		this.sleep(3000);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
-		//driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/table/tbody/tr[1]/td[8]/div/a")).click();
-		//this.sleep(1000);
+		// 创建询价单（第一条单据）
+		driver.findElement(By.className("Tab_set")).click();
+		this.sleep(2000);
 		
+		// 询价单编号
+		driver.findElement(By.name("consultCode")).sendKeys("XJD-0706-100");
+		this.sleep(2000);
+		
+		// 询价单名称
+		driver.findElement(By.name("consultName")).sendKeys("询价单0706-100");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		// 报价截止时间
+		driver.findElement(By.id("offerendTime")).click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+				
+		/**
+		 * 切换到iFrame再跳出
+		 * */ 
+		WebElement offerendTime = driver.findElement(By.xpath("/html/body/div[3]/iframe"));
+		this.sleep(2000);
+		driver.switchTo().frame(offerendTime);
+		this.sleep(2000);
+		driver.findElement(By.xpath("/html/body/div/div[3]/table/tbody/tr[6]/td[4]")).click();
+		this.sleep(2000);
+		driver.findElement(By.id("dpOkInput")).click();
+		this.sleep(2000);
+		driver.switchTo().defaultContent();
+		this.sleep(1000);
+		
+		// 价格方式 - 总价（分项：//*[@id="addConsultPrice"]/div[4]/input[2]）
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[4]/input[1]")).click();
+		this.sleep(2000);
+		
+		// 价格类型 - 到货价
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[5]/input[1]")).click();
+		this.sleep(2000);
+		
+		// 是否含税
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[6]/input[1]")).click();
+		this.sleep(2000);
+		
+		// 税率 - 4%
+		WebElement rate = driver.findElement(By.name("taxRate"));
+		Select rateOpt = new Select(rate);
+		rateOpt.selectByValue("4");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		// 结算条件 - 货到付款并留质保金 
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[8]/input[2]")).click();
+		this.sleep(2000);
+		
+		// 质保金 比例
+		driver.findElement(By.name("guaranteeMoneyRate")).sendKeys("5");
+		this.sleep(1000);
+		
+		// 联系人姓名
+		driver.findElement(By.name("contactName")).sendKeys("张三");
+		this.sleep(1000);
+		
+		// 手机号码
+		driver.findElement(By.name("contactPhone")).sendKeys("13910733251");
+		this.sleep(1000);
+
+		// 点击保存
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[19]/a[1]")).click();
+		this.sleep(1000);
+		
+		/**
+		 * 切换到已揭示列表
+		 * 
 		Set<String> handles = driver.getWindowHandles(); 
 		for(String s:handles){
 			System.out.println(s);
@@ -85,10 +169,8 @@ public WebDriver driver;
 		}
 		driver.findElement(By.linkText("已揭示")).click();
 		
-		//WebElement checkout = driver.findElement(By.className("yjs_tbody_cont"));
-		//List<WebElement> checkouts = checkout.findElements(By.className("look"));
-		//checkouts.get(1).click();
-
+		 * */
+		
 	}
 	
 	private void sleep(int i) {
