@@ -111,7 +111,7 @@ public class RequestJC {
 		/**
 		 * 输入采购申请编号 
 		 * */
-		driver.findElement(By.className("whiteMsgIpt")).sendKeys("JC-070515");
+		driver.findElement(By.className("whiteMsgIpt")).sendKeys("JC-071603");
 		this.sleep(1000);
 		
 		//选择采购结果类型 - 生成合同
@@ -121,33 +121,54 @@ public class RequestJC {
 		this.sleep(1000);
 		
 		// 输入采购数量
-		driver.findElement(By.name("purchaseNum")).sendKeys("100");
+		driver.findElement(By.name("purchaseNum")).sendKeys("200");
 		this.sleep(1000);
 		
 		// 输入概算金额
-		driver.findElement(By.name("countMoney")).sendKeys("9999.99");
+		driver.findElement(By.name("countMoney")).sendKeys("20000");
 		this.sleep(2000);
 		
 		// 交货期startTime
 		driver.findElement(By.id("d4311")).click();
-		this.sleep(2000);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// 切换到iFrame再跳出
 		WebElement iframeStart = driver.findElement(By.xpath("/html/body/div[3]/iframe"));
 		driver.switchTo().frame(iframeStart);
 		driver.findElement(By.xpath("//*[@id='dpTodayInput']")).click();
-		this.sleep(2000);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.switchTo().defaultContent();
 		this.sleep(2000);
 		
 		// 交货期endTime
 		driver.findElement(By.id("d4312")).click();
-		this.sleep(2000);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
 		// 切换到iFrame再跳出
 		WebElement iframeEnd = driver.findElement(By.xpath("/html/body/div[3]/iframe"));
 		driver.switchTo().frame(iframeEnd);
 		driver.findElement(By.id("dpTodayInput")).click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.switchTo().defaultContent();
 		this.sleep(2000);
 		
@@ -168,7 +189,7 @@ public class RequestJC {
 		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/div[11]/div/div/div/div[2]/div[1]/dl[1]/dd/a[1]")).click();
 		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/div[11]/div/div/div/div[2]/div[2]/dl/dd/a[1]")).click();
 		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/div[11]/div/div/div/div[2]/div[3]/dl/dd/a[1]")).click();
-		driver.findElement(By.name("receiveAddress")).sendKeys("BJ-HD-X11");
+		driver.findElement(By.name("receiveAddress")).sendKeys("BJ-CY-X3");
 		this.sleep(1000);
 		
 		// 选择需求单位
@@ -182,11 +203,11 @@ public class RequestJC {
 		this.sleep(1000);
 		
 		// 输入手机号码
-		driver.findElement(By.name("linkmanPhone")).sendKeys("1891112345");
+		driver.findElement(By.name("linkmanPhone")).sendKeys("18600112233");
 		this.sleep(1000);
 		
 		// 输入邮箱
-		driver.findElement(By.name("email")).sendKeys("1891112345@qq.com");
+		driver.findElement(By.name("email")).sendKeys("18600112233@qq.com");
 		this.sleep(1000);
 		
 		// 输入备注

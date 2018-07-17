@@ -137,13 +137,13 @@ public class Plan {
 		/**
 		 * 输入采购计划编号
 		 * */ 
-		driver.findElement(By.name("planCodeId")).sendKeys("Plan-JC-070515");
+		driver.findElement(By.name("planCodeId")).sendKeys("Plan-JC-071601");
 		this.sleep(1000);
 			
 		/**
 		 * 输入采购计划名称
 		 * */ 
-		driver.findElement(By.name("planName")).sendKeys("采购计划-集采-070515");
+		driver.findElement(By.name("planName")).sendKeys("采购计划-集采-071601");
 		this.sleep(1000);
 		
 		/**

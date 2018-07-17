@@ -1,3 +1,9 @@
+/**
+ * CaseName：询价单的创建
+ * Time：20180706
+ * Creator: ZJ
+ * */
+
 package ChinaDeb;
 
 import java.util.List;
@@ -6,7 +12,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Select;
 
 public class ConsultPrice {
@@ -43,17 +48,15 @@ public WebDriver driver;
 		driver.findElement(By.name("password")).sendKeys("sqw123");
 		driver.findElement(By.className("loginBtn")).click();
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		driver.findElement(By.className("help")).click();
 		
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -61,16 +64,16 @@ public WebDriver driver;
 		WebElement element = driver.findElement(By.className("menuB"));
 		List<WebElement> elements = element.findElements(By.tagName("li"));
 		elements.get(1).click();
-		this.sleep(2000);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
-
 	public void purchaseRequest(){
-		// 定位询比价采购按钮
-		//WebElement element = driver.findElement(By.className("workbenchL_menu"));
-		//List<WebElement> elements = element.findElements(By.tagName("li"));
-		//elements.get(3).click();
-		
+				
 		// 询价单管理
 		driver.get("http://192.168.6.108:1111/view/purchaseManage/enquiryManage/inquiryList/waitingCreate.html");
 		try {
@@ -79,16 +82,17 @@ public WebDriver driver;
 			e.printStackTrace();
 		}
 		
+		
 		// 创建询价单（第一条单据）
 		driver.findElement(By.className("Tab_set")).click();
 		this.sleep(2000);
 		
 		// 询价单编号
-		driver.findElement(By.name("consultCode")).sendKeys("XJD-0706-100");
+		driver.findElement(By.name("consultCode")).sendKeys("XJD-FX-071601-测试专用-勿动");
 		this.sleep(2000);
 		
 		// 询价单名称
-		driver.findElement(By.name("consultName")).sendKeys("询价单0706-100");
+		driver.findElement(By.name("consultName")).sendKeys("询价单-FX-071601-测试专用-勿动");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -117,8 +121,12 @@ public WebDriver driver;
 		driver.switchTo().defaultContent();
 		this.sleep(1000);
 		
-		// 价格方式 - 总价（分项：//*[@id="addConsultPrice"]/div[4]/input[2]）
-		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[4]/input[1]")).click();
+		/**
+		 * 报价方式
+		 * 总价：//*[@id="addConsultPrice"]/div[4]/input[1]
+		 * 分项：//*[@id="addConsultPrice"]/div[4]/input[2]
+		 * */ 
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[4]/input[2]")).click();
 		this.sleep(2000);
 		
 		// 价格类型 - 到货价
@@ -153,7 +161,20 @@ public WebDriver driver;
 		
 		// 手机号码
 		driver.findElement(By.name("contactPhone")).sendKeys("13910733251");
+		this.sleep(2000);
+		
+		// 联系电话
+		driver.findElement(By.name("telephone")).sendKeys("68475361");
 		this.sleep(1000);
+		
+		// 邮箱
+		driver.findElement(By.name("email")).sendKeys("alltesting@163.com");
+		this.sleep(1000);
+		
+		// 备注
+		driver.findElement(By.name("remark")).sendKeys("创建询价单");
+		this.sleep(1000);
+		
 
 		// 点击保存
 		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[19]/a[1]")).click();

@@ -108,11 +108,11 @@ public class Request {
 		// 选择物资
 		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[3]/table[2]/tbody/tr[1]/td[1]/div/label")).click();
 		driver.findElement(By.className("depBtn")).click();
-		
+		//*[@id="tip"]/li[2]/div[3]/table[2]/tbody/tr[1]/td[1]/div/label
 		/**
 		 * 输入采购申请编号 
 		 * */
-		driver.findElement(By.className("whiteMsgIpt")).sendKeys("ZC-0070506");
+		driver.findElement(By.className("whiteMsgIpt")).sendKeys("ZC-0071301");
 		this.sleep(1000);
 		
 		//选择采购结果类型 - 生成合同
