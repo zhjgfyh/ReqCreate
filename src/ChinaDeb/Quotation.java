@@ -1,5 +1,5 @@
 /**
- * CaseName：报价
+ * CaseName：报价 - 华东
  * Note: 2条物资 - 按分项报价
  * Time：20180717
  * Creator: ZJ
@@ -52,8 +52,8 @@ public WebDriver driver;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		driver.findElement(By.className("help")).click();
 		
+		driver.findElement(By.className("help")).click();
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -264,7 +264,7 @@ public WebDriver driver;
 		 * */
 		WebElement total_2 = driver.findElement(By.id("totalAmountText_2"));
 		total_2.clear();
-		total_2.sendKeys("23000");
+		total_2.sendKeys("30000");
 		this.sleep(1000);
 		
 		/**

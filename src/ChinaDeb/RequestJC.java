@@ -111,7 +111,7 @@ public class RequestJC {
 		/**
 		 * 输入采购申请编号 
 		 * */
-		driver.findElement(By.className("whiteMsgIpt")).sendKeys("JC-071603");
+		driver.findElement(By.className("whiteMsgIpt")).sendKeys("JC-071801");
 		this.sleep(1000);
 		
 		//选择采购结果类型 - 生成合同
