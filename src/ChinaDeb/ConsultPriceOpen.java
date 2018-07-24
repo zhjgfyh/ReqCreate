@@ -1,6 +1,6 @@
 /**
- * CaseName：询价单的创建
- * Time：20180706
+ * CaseName：询价单的创建 - 公开
+ * Time：20180724
  * Creator: ZJ
  * */
 
@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class ConsultPrice {
+public class ConsultPriceOpen {
 
 public WebDriver driver;
 	
@@ -88,11 +88,11 @@ public WebDriver driver;
 		this.sleep(2000);
 		
 		// 询价单编号
-		driver.findElement(By.name("consultCode")).sendKeys("XJDOpen-FX-072401-测试专用-勿动");
+		driver.findElement(By.name("consultCode")).sendKeys("XJD-Open-FX-072401-测试专用-勿动");
 		this.sleep(2000);
 		
 		// 询价单名称
-		driver.findElement(By.name("consultName")).sendKeys("询价单公开-FX-072401-测试专用-勿动");
+		driver.findElement(By.name("consultName")).sendKeys("询价单-公开-FX-072401-测试专用-勿动");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -155,6 +155,20 @@ public WebDriver driver;
 		driver.findElement(By.name("guaranteeMoneyRate")).sendKeys("5");
 		this.sleep(1000);
 		
+		/**
+		 * 是否发布询价公告
+		 * 是 - //*[@id="addConsultPrice"]/div[11]/input[1]
+		 * 否 - //*[@id="addConsultPrice"]/div[11]/input[2]
+		 * */
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[11]/input[1]")).click();
+		this.sleep(1000);
+		
+		/**
+		 * 发布平台 - 电怡宝
+		 * */
+		driver.findElement(By.name("publishing")).click();
+		this.sleep(2000);
+		
 		// 联系人姓名
 		driver.findElement(By.name("contactName")).sendKeys("张三");
 		this.sleep(1000);
@@ -177,7 +191,7 @@ public WebDriver driver;
 		
 
 		// 点击保存
-		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[19]/a[1]")).click();
+		driver.findElement(By.xpath("//*[@id='addConsultPrice']/div[21]/a[1]")).click();
 		this.sleep(1000);
 
 		
@@ -202,9 +216,10 @@ public WebDriver driver;
 
 	public static void main(String[] args) {
 		//实例化对象
-		ConsultPrice action = new ConsultPrice();
+		ConsultPriceOpen action = new ConsultPriceOpen();
 		action.InitDriver();
 		action.InputBox();
 		action.purchaseRequest();
 	}
 }
+

@@ -1,6 +1,6 @@
 /**
- * CaseName：采购计划创建 - 定向
- * Time：20180702
+ * CaseName：采购计划创建 - 公开
+ * Time：20180724
  * Creator: ZJ
  * */
 
@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class Plan {
+public class PlanOpen {
 	
 	public WebDriver driver;
 	
@@ -137,13 +137,13 @@ public class Plan {
 		/**
 		 * 输入采购计划编号
 		 * */ 
-		driver.findElement(By.name("planCodeId")).sendKeys("Plan-JC-072301");
+		driver.findElement(By.name("planCodeId")).sendKeys("Plan-JC-072401");
 		this.sleep(1000);
 			
 		/**
 		 * 输入采购计划名称
 		 * */ 
-		driver.findElement(By.name("planName")).sendKeys("采购计划-集采-072301");
+		driver.findElement(By.name("planName")).sendKeys("采购计划-集采-072401");
 		this.sleep(1000);
 		
 		/**
@@ -189,7 +189,7 @@ public class Plan {
 		/**
 		 * 询价方式
 		 * */ 
-		driver.findElement(By.className("borderStyl")).click();
+		driver.findElement(By.className("open")).click();
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -198,19 +198,9 @@ public class Plan {
 		}
 		
 		/**
-		 * 选择供应商
-		 * */ 
-		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/table/tbody/tr[1]/td[7]/a")).click();
-		this.sleep(2000);
-		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/table/tbody/tr[2]/td[7]/a")).click();
-		this.sleep(2000);
-		driver.findElement(By.xpath("//*[@id='tip']/li[2]/div[2]/table/tbody/tr[3]/td[7]/a")).click();
-		this.sleep(2000);
-		
-		/**
-		 * 点击确定按钮
-		 * */ 
-		driver.findElement(By.className("hasChoseBtn")).click();
+		 * 备注
+		 * */
+		driver.findElement(By.name("remark")).sendKeys("公开询价");
 		this.sleep(2000);
 		
 		/**
@@ -230,7 +220,7 @@ public class Plan {
 		/**
 		 * 实例化对象
 		 * */
-		Plan action = new Plan();
+		PlanOpen action = new PlanOpen();
 		action.InitDriver();
 		action.InputBox();
 		action.RequestPlan();
